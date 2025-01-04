@@ -33,13 +33,15 @@ const Home = () => {
   };
 
   const saveEdit = (updatedStock) => {
-    const updatedStocks = stocks.map((stock, i) =>
-      i === stockToEdit.index ? updatedStock : stock
+    setStocks((prevStocks) =>
+      prevStocks.map((stock, i) =>
+        i === stockToEdit.index ? { ...updatedStock, index: i } : stock
+      )
     );
-    setStocks(updatedStocks);
     setIsEditMode(false);
     setStockToEdit(null);
   };
+  
 
   const cancelEdit = () => {
     setIsEditMode(false);

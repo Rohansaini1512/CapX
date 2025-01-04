@@ -4,53 +4,35 @@ import axios from 'axios';
 const Portfolio = () => {
   const [stocks, setStocks] = useState([]);
   const [portfolioValue, setPortfolioValue] = useState(0);
-  const [loading, setLoading] = useState(true);
 
-  // Example stock symbols
-  const stockSymbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA'];
+  const stockSymbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA']; 
+  const API_KEY = 'ctlqe0hr01qv7qq32rc0ctlqe0hr01qv7qq32rcg'; 
 
   useEffect(() => {
     const fetchStockPrices = async () => {
-      setLoading(true); // Set loading to true before fetching data
       try {
         const responses = await Promise.all(
-          stockSymbols.map(async (symbol) => {
-            try {
-              const response = await axios.get(`https://www.alphavantage.co/query`, {
-                params: {
-                  function: 'TIME_SERIES_INTRADAY',
-                  symbol: symbol,
-                  interval: '5min',
-                  apikey: import.meta.env.VITE_ALPHA_VANTAGE_API_KEY, 
-                },
-              });
-
-              const timeSeries = response.data['Time Series (5min)'];
-              if (!timeSeries) {
-                console.warn(`No data for ${symbol}`);
-                return { symbol, price: 0 };
-              }
-
-              const latestTime = Object.keys(timeSeries)[0];
-              return {
-                symbol,
-                price: parseFloat(timeSeries[latestTime]['1. open']),
-              };
-            } catch (err) {
-              console.error(`Error fetching data for ${symbol}:`, err);
-              return { symbol, price: 0 };
-            }
-          })
+          stockSymbols.map(symbol =>
+            axios.get(`https://finnhub.io/api/v1/quote`, {
+              params: {
+                symbol: symbol,
+                token: API_KEY,
+              },
+            })
+          )
         );
 
-        // Set stocks and portfolio value
-        setStocks(responses);
-        const totalValue = responses.reduce((acc, stock) => acc + stock.price, 0);
+        const prices = responses.map(response => ({
+          symbol: response.config.params.symbol,
+          price: response.data.c, 
+        }));
+
+        setStocks(prices);
+
+        const totalValue = prices.reduce((acc, stock) => acc + stock.price, 0);
         setPortfolioValue(totalValue);
       } catch (error) {
         console.error('Error fetching stock prices:', error);
-      } finally {
-        setLoading(false); // Ensure loading is false after the operation
       }
     };
 
@@ -60,22 +42,16 @@ const Portfolio = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Portfolio</h1>
-      {loading ? (
-        <p>Loading stock prices...</p>
-      ) : (
-        <>
-          <ul>
-            {stocks.map((stock) => (
-              <li key={stock.symbol} className="mb-2">
-                {stock.symbol}: ${stock.price.toFixed(2)}
-              </li>
-            ))}
-          </ul>
-          <h2 className="text-xl font-bold mt-4">
-            Total Portfolio Value: ${portfolioValue.toFixed(2)}
-          </h2>
-        </>
-      )}
+      <ul>
+        {stocks.map(stock => (
+          <li key={stock.symbol} className="mb-2">
+            {stock.symbol}: ${stock.price.toFixed(2)}
+          </li>
+        ))}
+      </ul>
+      <h2 className="text-xl font-bold mt-4">
+        Total Portfolio Value: ${portfolioValue.toFixed(2)}
+      </h2>
     </div>
   );
 };
