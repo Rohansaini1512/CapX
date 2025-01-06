@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Jan 06 19:49:16 IST 2025
+junit-platform-engine-1.9.3.jar>repo.jenkins-ci.org=
+junit-platform-engine-1.9.3.pom>repo.jenkins-ci.org=

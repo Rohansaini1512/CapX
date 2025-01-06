@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line react/prop-types
 const StockForm = ({ addStock }) => {
     const [form, setForm] = React.useState({ name: '', ticker: '', quantity: 0, price: 0 });
   

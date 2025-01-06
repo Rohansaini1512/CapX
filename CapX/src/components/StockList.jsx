@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line react/prop-types
 const StockList = ({ stocks, removeStock, editStock }) => (
   <div className="p-4">
     <table className="w-full border-collapse border">

@@ -1,6 +1,8 @@
 package com.rohan.stockApp.stock;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Version;
 
@@ -8,6 +10,7 @@ import jakarta.persistence.Version;
 public class Stock {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;
