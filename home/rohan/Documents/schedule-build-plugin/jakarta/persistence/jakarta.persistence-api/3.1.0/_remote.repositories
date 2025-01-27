@@ -1,3 +1,4 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Mon Jan 06 20:19:22 IST 2025
+#Tue Jan 07 00:04:59 IST 2025
 jakarta.persistence-api-3.1.0.pom>repo.jenkins-ci.org=
+jakarta.persistence-api-3.1.0-sources.jar>repo.jenkins-ci.org=

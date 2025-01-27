@@ -1,3 +1,5 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Mon Jan 06 20:19:01 IST 2025
+#Thu Jan 23 01:54:19 IST 2025
+spring-boot-autoconfigure-3.4.0-javadoc.jar>repo.jenkins-ci.org=
+spring-boot-autoconfigure-3.4.0-sources.jar>repo.jenkins-ci.org=
 spring-boot-autoconfigure-3.4.0.pom>repo.jenkins-ci.org=

@@ -3,7 +3,7 @@
   <groupId>com.rohan</groupId>
   <artifactId>capX</artifactId>
   <versioning>
-    <lastUpdated>20250106151602</lastUpdated>
+    <lastUpdated>20250127152940</lastUpdated>
     <snapshot>
       <localCopy>true</localCopy>
     </snapshot>
@@ -11,12 +11,12 @@
       <snapshotVersion>
         <extension>pom</extension>
         <value>0.0.1-SNAPSHOT</value>
-        <updated>20250106151602</updated>
+        <updated>20250127152940</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>jar</extension>
         <value>0.0.1-SNAPSHOT</value>
-        <updated>20250106151602</updated>
+        <updated>20250127152940</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>

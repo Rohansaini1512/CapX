@@ -44,8 +44,8 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
+		<!-- <dependency> -->
+			<!-- <groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>5.3.10</version>
     	</dependency>
@@ -54,7 +54,7 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
